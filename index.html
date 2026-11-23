@@ -50,6 +50,7 @@
         <li><a href="#gyvenimo aprašymas"><i class="bi bi-file-earmark-text navicon"></i><span>Gyvenimo aprašymas</span></a></li>
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Mano portfolio</span></a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i><span>Paslaugos</span></a></li>
+        <li><a href="#pazanga"><i class="bi bi-bar-chart navicon"></i><span>Pažanga</span></a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Kontaktai</span></a></li>
       </ul>
     </nav>
@@ -82,6 +83,12 @@
 
     <!-- About Section -->
     <section id="apie" class="apie section">
+    
+      <!-- CSS Animacijos figūros (LD Papildoma užduotis) -->
+    <div class="animated-shapes">
+      <div class="shape circle"></div>
+      <div class="shape triangle"></div>
+    </div>
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -426,6 +433,69 @@
       </div> <!-- Užsidaro container -->
     </section><!-- /Services Section -->
 
+<!-- Įgūdžiai -->
+    <section id="pazanga" class="pazanga section">
+      
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Kompetencijų pažanga</h2>
+        <p>Mano asmeninio tobulėjimo ir įgūdžių sekimo modulis.</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
+       <!-- Viršutinė dalis: Vartotojo lygis, XP ir Statistika -->
+        <div class="row info-stats-row mb-5">
+          
+          <!-- Lygio ir XP informacija -->
+          <div class="col-md-6 user-level-info">
+            <h4 class="mb-3">Vartotojo profilis</h4>
+            <div class="info-box">
+              <p><strong>Esamas Lygis:</strong> <span id="user-level" class="badge-level">1</span></p>
+              <p><strong>Rangas:</strong> <span id="user-rank">Pradedantysis</span></p>
+              <p><strong>Bendra patirtis:</strong> <span id="user-xp">0</span> XP</p>
+              
+              <!-- Progreso juosta iki kito lygio -->
+              <div class="xp-progress-container mt-3">
+                <span id="progress-text" class="progress-label">Iki 2 lygio (trūksta 50 XP)</span>
+                <div class="xp-progress-bar-wrap">
+                  <div id="progress-fill" class="xp-progress-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistika -->
+          <div class="col-md-6 user-stats-info mt-4 mt-md-0">
+            <h4 class="mb-3">Mokymosi statistika</h4>
+            <div class="info-box">
+              <p><strong>Bendra įgūdžių suma:</strong> <span id="stat-total">0</span></p>
+              <p><strong>Visiškai atliktų įgūdžių:</strong> <span id="stat-done">0</span></p>
+              <p><strong>Atlikta procentais:</strong> <span id="stat-percent">0</span>%</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Apatinė dalis: Kanban Lenta (3 stulpeliai) -->
+        <div class="kanban-board">
+          
+          <!-- 1 stulpelis: Planuojama -->
+          <div class="kanban-col" id="col-planuojama">
+            <h5 class="kanban-title text-center">Planuojama</h5>
+          </div>
+
+          <!-- 2 stulpelis: Mokomasi -->
+          <div class="kanban-col" id="col-mokomasi">
+            <h5 class="kanban-title text-center">Mokomasi</h5>
+          </div>
+
+          <!-- 3 stulpelis: Atlikta -->
+          <div class="kanban-col" id="col-atlikta">
+            <h5 class="kanban-title text-center">Atlikta</h5>
+          </div>
+
+        </div> <!-- Užsidaro kanban-board -->
+        
+
     <!-- Contact Section -->
     <section id="contact" class="contact section">
 
@@ -466,35 +536,69 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
+            <form id="custom-contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+  <div class="row gy-4">
 
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Jūsų vardas" required="">
-                </div>
+    <div class="col-md-6">
+      <label>Vardas *</label>
+      <input type="text" id="vardas" class="form-control" placeholder="Įveskite vardą" required>
+      <small class="error-text" id="vardas-error"></small>
+    </div>
 
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Jūsų el. paštas" required="">
-                </div>
+    <div class="col-md-6">
+      <label>Pavardė *</label>
+      <input type="text" id="pavarde" class="form-control" placeholder="Įveskite pavardę" required>
+      <small class="error-text" id="pavarde-error"></small>
+    </div>
 
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Tema" required="">
-                </div>
+    <div class="col-md-6">
+      <label>El. paštas *</label>
+      <input type="email" id="email" class="form-control" placeholder="pavyzydys@mail.lt" required>
+      <small class="error-text" id="email-error"></small>
+    </div>
 
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Žinutė" required=""></textarea>
-                </div>
+    <div class="col-md-6">
+      <label>Telefono numeris *</label>
+      <input type="text" id="telefonas" class="form-control" placeholder="+370 6XX XXXXX" required>
+      <small class="error-text" id="telefonas-error"></small>
+    </div>
 
-                <div class="col-md-12 text-center">
-                  <div class="loading">Kraunama</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Jūsų žinutė išsiųsta. Ačiū!</div>
+    <div class="col-md-12">
+      <label>Adresas *</label>
+      <input type="text" id="adresas" class="form-control" placeholder="Įveskite adresą" required>
+      <small class="error-text" id="adresas-error"></small>
+    </div>
 
-                  <button type="submit">Send Message</button>
-                </div>
+    
+    <div class="col-md-12 mt-4">
+      <label>1. Kaip vertinate svetainės dizainą? (1-10) *</label>
+      <input type="range" id="q1" class="form-range" min="1" max="10" value="5" required>
+      <span id="q1-val">5</span>
+    </div>
+    <div class="col-md-12">
+      <label>2. Kaip vertinate naršymo patogumą? (1-10) *</label>
+      <input type="range" id="q2" class="form-range" min="1" max="10" value="5" required>
+      <span id="q2-val">5</span>
+    </div>
+    <div class="col-md-12">
+      <label>3. Kaip vertinate turinio kokybę? (1-10) *</label>
+      <input type="range" id="q3" class="form-range" min="1" max="10" value="5" required>
+      <span id="q3-val">5</span>
+    </div>
 
-              </div>
-            </form>
+    <div class="col-md-12 text-center mt-4">
+      <button type="button" id="btn-clear" class="btn btn-secondary me-2">Išvalyti</button>
+      <button type="submit" id="btn-submit" class="btn btn-primary" disabled>Siųsti</button>
+    </div>
+
+  </div>
+</form>
+
+<div id="form-results" class="mt-5 p-4 bg-light d-none border">
+  <h4 class="mb-3">Pateikti duomenys:</h4>
+  <div id="results-content"></div>
+</div>
+
           </div><!-- End Contact Form -->
 
         </div>
@@ -551,6 +655,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/custom.js"></script>
 
 </body>
 
